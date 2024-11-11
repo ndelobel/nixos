@@ -1,8 +1,5 @@
 {...}: {
-  # time zone.
   time.timeZone = "Europe/Paris";
-
-  # locale
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
@@ -16,7 +13,6 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # keymap
   services.xserver.xkb = {
     layout = "fr";
     variant = "";

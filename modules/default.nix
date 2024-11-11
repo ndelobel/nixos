@@ -1,15 +1,15 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./users.nix
-    ./desktop.nix
+    ./sound.nix
     ./locale.nix
-    ./programs.nix
+    ./programs
     ./gaming.nix
     ./virtualisation.nix
-    ./dev
+    ./desktop
+    ./dev.nix
   ];
 
-  # allow unfree packages
+  programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true;
 }

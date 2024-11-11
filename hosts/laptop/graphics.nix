@@ -1,8 +1,13 @@
-{ config, ... }:
 {
-  boot.kernelParams = [ "nvidia_drm.modeset=1" ];
+  config,
+  ...
+}: {
+  boot.kernelParams = ["nvidia_drm.modeset=1"];
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   services.xserver.videoDrivers = [
     "amdgpu"
@@ -11,8 +16,8 @@
 
   # nvidia
   hardware.nvidia = {
-    open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     nvidiaSettings = true;
     modesetting.enable = false;
     prime = {

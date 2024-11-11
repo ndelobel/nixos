@@ -13,6 +13,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
@@ -20,7 +21,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     ...

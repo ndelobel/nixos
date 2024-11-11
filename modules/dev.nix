@@ -5,6 +5,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     # editors
+    jetbrains.webstorm
     jetbrains.rust-rover
     jetbrains.pycharm-professional
     jetbrains.clion
@@ -64,5 +65,5 @@
 
   # docker
   virtualisation.docker.enable = true;
-  users.users.ndelobel.extraGroups = [ "docker" ];
+  users.users.ndelobel.extraGroups = ["docker"];
 }

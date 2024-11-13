@@ -1,5 +1,8 @@
 {...}: {
-  imports = [./apps];
+  imports = [./programs ./gnome.nix ./theme.nix];
+
+  nixpkgs.config.allowUnfree = true;
+
   home = {
     username = "ndelobel";
     homeDirectory = "/home/ndelobel";

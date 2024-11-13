@@ -9,11 +9,18 @@
     };
   };
 
-  output = {...} @ inputs: {
+  outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations = {
-      laptop = {
+      laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [./hosts/laptop/configuration.nix];
+      };
+
+      vbox = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/vbox/configuration.nix];
       };
     };
   };

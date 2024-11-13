@@ -1,4 +1,6 @@
 {inputs, ...}: {
+  imports = [inputs.home-manager.nixosModules.default];
+
   users.users.ndelobel = {
     isNormalUser = true;
     initialPassword = "password";
@@ -8,8 +10,8 @@
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
-    users = {
-      "ndelobel" = import ../home;
-    };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.ndelobel = import ../home;
   };
 }

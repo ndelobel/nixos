@@ -1,5 +1,10 @@
 {...}: {
-  imports = [./lib.nix ./desktop.nix ./virtualisation.nix];
+  imports = [
+    ./users.nix
+    ./desktop.nix
+    ./virtualisation.nix
+    ./locale.nix
+  ];
 
   config = {
     nix.settings.experimental-features = ["nix-command" "flakes"];

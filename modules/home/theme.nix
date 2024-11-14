@@ -22,7 +22,7 @@ in {
     };
   };
 
-  dconf = {
+  dconf.settings = {
     # dark theme
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";

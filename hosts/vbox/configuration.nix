@@ -9,10 +9,14 @@
   ];
 
   # ====== boot loader ======
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    theme = null;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      theme = null;
+    };
   };
 
   # ====== network ======

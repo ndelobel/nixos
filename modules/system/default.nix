@@ -2,7 +2,6 @@
   imports = [
     ./users.nix
     ./desktop.nix
-    ./virtualisation.nix
     ./locale.nix
   ];
 

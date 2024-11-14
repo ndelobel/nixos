@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/system
+    ../../modules/virtualization.nix
   ];
 
   # boot loader

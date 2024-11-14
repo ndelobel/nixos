@@ -8,7 +8,7 @@
     ../../modules/system
   ];
 
-  # ====== boot loader ======
+  # boot loader
   boot.loader = {
     efi.canTouchEfiVariables = true;
     grub = {
@@ -19,11 +19,11 @@
     };
   };
 
-  # ====== network ======
+  # network
   networking.hostName = "vbox";
   networking.networkmanager.enable = true;
 
-  # ====== virtualbox ======
+  # virtualbox guest
   virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.guest.dragAndDrop = true;
   virtualisation.virtualbox.guest.clipboard = true;

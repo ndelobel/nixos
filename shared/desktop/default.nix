@@ -1,5 +1,7 @@
-{ config, lib, ... } : {
-  imports = [ ./gnome.nix ];
+{ config, lib, ... }: {
+  imports = [
+    ./gnome.nix
+  ];
 
   options = {
     desktop = {

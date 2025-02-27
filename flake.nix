@@ -10,14 +10,14 @@
     mkSystem = { hostname, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
-          (./machines + "/${hostname}/machine.nix")
+          (./machines + "/${hostname}/${hostname}.nix")
       ];
     };
 
   in {
     nixosConfigurations = {
       laptop = mkSystem { hostname = "laptop"; };
-      vbox = mkSystem { hostname = "vbox"; };
+      vm-vbox = mkSystem { hostname = "vm-vbox"; };
     };
   };
 }

@@ -3,16 +3,14 @@
 {
   imports = [
     ./hardware.nix
+    ../../shared/shared.nix
   ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "vm-vbox";
+  networking.hostName = "laptop-victus";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -33,10 +31,6 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  # Enable virtualbox guest additions
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.guest.dragAndDrop = true;
 
   # Enable the windowing system.
   services.xserver.enable = true;

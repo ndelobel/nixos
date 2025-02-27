@@ -2,6 +2,7 @@
   imports = [
     ./apps/default.nix
     ./theme.nix
+    ./gnome.nix
   ];
 
   home.username = "ndelobel";

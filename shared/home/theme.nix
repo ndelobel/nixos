@@ -3,7 +3,7 @@
     (whitesur-icon-theme.override { alternativeIcons = true; })
   ];
 
-  home.file.".local/share/backgrounds/moon-night.jpg".source = ../../resources/moon-night.jpg;
+  home.file.".local/share/backgrounds/moon-night.jpg".source = ../../resources/background.jpg;
 
   dconf.settings = lib.mkIf (desktopConfig.enable && desktopConfig.environment == "gnome") {
     "org/gnome/desktop/background" = {

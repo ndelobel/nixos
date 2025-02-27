@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [
     ./gnome.nix
   ];
@@ -17,13 +17,13 @@
   };
 
   config = lib.mkIf config.desktop.enable {
-    # Enable the windowing system
-    services.xserver.enable = true;
-
-    # Configure keymap in X11/Wayland
-    services.xserver.xkb = {
-      layout = "fr";
-      variant = "azerty";
+    services.xserver = {
+      enable = true;
+      xkb = {
+        layout = "fr";
+        variant = "azerty";
+      };
+      excludePackages = with pkgs; [ xterm ];
     };
 
     # Enable sound

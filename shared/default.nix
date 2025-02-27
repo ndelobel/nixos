@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ config, inputs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.default
     ./users.nix
@@ -6,7 +6,10 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      desktopConfig = config.desktop;
+    };
     users = {
       "ndelobel" = import ./home/default.nix;
     };
@@ -31,4 +34,6 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+  documentation.nixos.enable = false;
 }

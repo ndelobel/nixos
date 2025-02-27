@@ -1,8 +1,16 @@
-{ ... }: {
+{ inputs, ... }: {
   imports = [
-    desktop/default.nix
-    ./apps/default.nix
+    inputs.home-manager.nixosModules.default
+    ./users.nix
+    ./desktop/default.nix
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "ndelobel" = import ./home/default.nix;
+    };
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;

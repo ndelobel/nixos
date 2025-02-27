@@ -14,10 +14,7 @@
     mkSystem = { hostname, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
-      modules = [
-          inputs.home-manager.nixosModules.default
-          (./machines + "/${hostname}/${hostname}.nix")
-      ];
+      modules = [ (./machines + "/${hostname}/${hostname}.nix") ];
     };
 
   in {

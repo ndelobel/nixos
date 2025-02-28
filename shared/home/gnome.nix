@@ -9,6 +9,10 @@
   dconf = {
     enable = true;
     settings = {
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout= "appmenu:minimize,maximize,close";
+        num-workspaces = 1;
+      };
       "org/gnome/shell" = {
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [

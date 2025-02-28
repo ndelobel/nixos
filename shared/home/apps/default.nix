@@ -1,5 +1,9 @@
 { pkgs, ... }: {
-  imports = [ ./gaming.nix ];
+  imports = [
+    ./editor.nix
+    ./gaming.nix
+    ./firefox.nix
+  ];
 
   programs.git = {
     enable = true;
@@ -7,5 +11,8 @@
     userEmail = "nathan.delobel@protonmail.com";
   };
 
-  programs.firefox.enable = true;
+  home.packages = with pkgs; [
+    resources
+    ghostty
+  ];
 }

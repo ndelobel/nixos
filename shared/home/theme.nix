@@ -1,4 +1,4 @@
-{ lib, pkgs, config, desktopConfig, ... }: {
+{ lib, pkgs, config, ... }: {
   home.packages = with pkgs; [
     (whitesur-icon-theme.override { alternativeIcons = true; })
     adw-gtk3
@@ -6,7 +6,7 @@
 
   home.file.".local/share/backgrounds/moon-night.jpg".source = ../../resources/background.jpg;
 
-  dconf.settings = lib.mkIf (desktopConfig.enable) {
+  dconf.settings = {
     "org/gnome/desktop/background" = {
       picture-uri = "file://${config.home.homeDirectory}/.local/share/backgrounds/moon-night.jpg";
       picture-uri-dark = "file://${config.home.homeDirectory}/.local/share/backgrounds/moon-night.jpg";

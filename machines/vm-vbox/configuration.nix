@@ -4,11 +4,18 @@
     ../../shared/default.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+       efiSupport = true;
+       device = "nodev";
+    };
+  };
 
   networking.hostName = "vm-vbox";
-  networking.networkmanager.enable = true;
 
   virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.guest.dragAndDrop = true;

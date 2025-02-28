@@ -8,12 +8,13 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
-      desktopConfig = config.desktop;
     };
     users = {
       "ndelobel" = import ./home/default.nix;
     };
   };
+
+  home-manager.backupFileExtension = "backup";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -36,4 +37,6 @@
   };
 
   documentation.nixos.enable = false;
+
+  networking.networkmanager.enable = true;
 }

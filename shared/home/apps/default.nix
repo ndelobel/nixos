@@ -18,6 +18,5 @@
   home.packages = with pkgs; [
     resources
     ghostty
-    gh
   ];
 }

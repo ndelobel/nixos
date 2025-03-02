@@ -1,7 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
+    alejandra
   ];
 
   programs.zed-editor = {
@@ -14,10 +16,14 @@
       "sql"
       "dockerfile"
     ];
+
     userSettings = {
-      base_keymap = "Jetbrains";
+      base_keymap = "JetBrains";
       theme = "Catppuccin Macchiato - No Italics";
       icon_theme = "Catppuccin Macchiato";
+
+      buffer_font_family = "JetBrainsMono Nerd Font";
+      ui_font_family = "JetBrainsMono Nerd Font";
 
       lsp = {
         rust-analyzer = {
@@ -34,10 +40,17 @@
 
       languages = {
         Nix = {
+          language_servers = [
+            "nixd"
+            "!nil"
+          ];
           formatter = {
             external = {
               command = "nixfmt";
-              arguments = ["--quiet" "--"];
+              arguments = [
+                "--quiet"
+                "--"
+              ];
             };
           };
         };

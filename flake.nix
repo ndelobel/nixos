@@ -13,20 +13,31 @@
       url = "github:nix-community/nur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
 
-  outputs = { nixpkgs, ... } @ inputs:
-  let
-    mkSystem = { hostname, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs; };
-      modules = [ (./machines + "/${hostname}/configuration.nix") ];
-    };
-
-  in {
-    nixosConfigurations = {
-      laptop = mkSystem { hostname = "laptop"; };
-      vm-vbox = mkSystem { hostname = "vm-vbox"; };
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
     };
   };
+
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      mkSystem =
+        {
+          hostname,
+          system ? "x86_64-linux",
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [ (./machines + "/${hostname}/configuration.nix") ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        laptop-victus = mkSystem { hostname = "laptop-victus"; };
+        vm-vbox = mkSystem { hostname = "vm-vbox"; };
+      };
+    };
 }

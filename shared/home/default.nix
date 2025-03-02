@@ -1,7 +1,7 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
     ./apps/default.nix
-    ./theme.nix
     ./gnome.nix
     ./fonts.nix
   ];

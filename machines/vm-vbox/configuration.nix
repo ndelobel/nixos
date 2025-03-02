@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../../shared/default.nix
@@ -10,8 +11,8 @@
       efiSysMountPoint = "/boot/efi";
     };
     grub = {
-       efiSupport = true;
-       device = "nodev";
+      efiSupport = true;
+      device = "nodev";
     };
   };
 

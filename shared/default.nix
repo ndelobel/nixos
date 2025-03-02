@@ -1,4 +1,5 @@
-{ config, inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [
     inputs.home-manager.nixosModules.default
     ./users.nix
@@ -14,9 +15,20 @@
     };
   };
 
-  home-manager.backupFileExtension = "backup";
+  system.userActivationScripts = {
+    removeConflictingFiles = {
+      text = ''
+        find ~ -type f -name "*.hmbkp" -delete
+      '';
+    };
+  };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  home-manager.backupFileExtension = "hmbkp";
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Paris";

@@ -1,11 +1,12 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ./gnome.nix ];
 
   services.xserver = {
     enable = true;
     xkb = {
-    layout = "fr";
-    variant = "azerty";
+      layout = "fr";
+      variant = "azerty";
     };
     excludePackages = with pkgs; [ xterm ];
   };

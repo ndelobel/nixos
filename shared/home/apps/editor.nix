@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
-    alejandra
   ];
 
   programs.zed-editor = {

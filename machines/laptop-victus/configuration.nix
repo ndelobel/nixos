@@ -18,13 +18,16 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   hardware.nvidia = {
     open = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
+    nvidiaSettings = false;
     powerManagement = {
       enable = true;
+      finegrained = true;
     };
     prime = {
       offload = {
@@ -42,6 +45,16 @@
   ];
 
   networking.hostName = "laptop-victus";
+
+  custom.gaming.enable = true;
+  fileSystems."/home/ndelobel/Games" = {
+    device = "/dev/disk/by-uuid/1c99a66f-b9d0-4bdf-b0d3-f4bf3ef79939";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
+  };
 
   system.stateVersion = "24.11";
 }

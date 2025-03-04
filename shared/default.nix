@@ -1,7 +1,13 @@
-{ inputs, ... }:
+{
+  lib,
+  inputs,
+  config,
+  ...
+}:
 {
   imports = [
     inputs.home-manager.nixosModules.default
+    ./options.nix
     ./users.nix
     ./desktop/default.nix
   ];
@@ -9,6 +15,7 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
+      customConfig = config.custom;
     };
     users = {
       "ndelobel" = import ./home/default.nix;
@@ -51,4 +58,8 @@
   documentation.nixos.enable = false;
 
   networking.networkmanager.enable = true;
+
+  programs.gamemode = lib.mkIf config.custom.gaming.enable {
+    enable = true;
+  };
 }
